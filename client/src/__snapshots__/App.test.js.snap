@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="App"
+>
+  <header
+    className="App-header"
+  >
+    <h1>
+      iTunes Search
+    </h1>
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        name="term"
+        type="text"
+      />
+      <select
+        defaultValue="all"
+        name="media"
+      >
+        <option
+          value="movie"
+        >
+          Movie
+        </option>
+        <option
+          value="podcast"
+        >
+          Podcast
+        </option>
+        <option
+          value="music"
+        >
+          Music
+        </option>
+        <option
+          value="musicVideo"
+        >
+          Music Video
+        </option>
+        <option
+          value="audiobook"
+        >
+          Audiobook
+        </option>
+        <option
+          value="shortFilm"
+        >
+          Short Film
+        </option>
+        <option
+          value="tvShow"
+        >
+          TV Show
+        </option>
+        <option
+          value="software"
+        >
+          Software
+        </option>
+        <option
+          value="ebook"
+        >
+          E-Book
+        </option>
+        <option
+          value="all"
+        >
+          All
+        </option>
+      </select>
+      <input
+        type="submit"
+        value="Search"
+      />
+    </form>
+    <h2>
+      Search Results
+    </h2>
+    <div
+      id="results"
+    />
+    <hr />
+    <h2>
+      Favourites
+    </h2>
+    <div
+      id="favs"
+    />
+  </header>
+</div>
+`;

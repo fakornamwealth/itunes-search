@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import iTunesSearch from "./iTunesSearch";
 
 const mediaTypes = [
   {
@@ -47,25 +48,6 @@ const mediaTypes = [
 function App() {
   const [searchResult, setSearchResult] = useState([]);
   const [favs, setFavs] = useState([]);
-
-  function iTunesSearch(event) {
-    event.preventDefault();
-    fetch("http://localhost:3000/search", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify({
-        term: event.target.term.value,
-        media: event.target.media.value,
-      }),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-        setSearchResult(response.results);
-      });
-  }
 
   function getFavs() {
     //const term = prompt("Enter search term:");
@@ -121,7 +103,16 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>iTunes Search</h1>
-        <form onSubmit={iTunesSearch}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            let results = iTunesSearch(
+              e.target.term.value,
+              e.target.media.value
+            );
+            setSearchResult(results);
+          }}
+        >
           <input type="text" name="term" />
           <select name="media" defaultValue="all">
             {mediaTypes.map((mediaType) => {

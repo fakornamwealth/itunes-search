@@ -14,14 +14,8 @@ app.use(bodyParser.json());
 
 var favsCollection = db.addCollection("favs");
 var favs = favsCollection.find();
-console.log(favs);
-/*
-let favs = [
-  {
-    test: "hi!",
-  },
-];
-*/
+
+//console.log(favs);
 
 app.get("/", (req, res) => {
   res.status(200).json({ data: "ok" });
