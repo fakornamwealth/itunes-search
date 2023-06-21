@@ -19,5 +19,8 @@
     "lokijs": "^1.5.12",
     "mocha": "^10.2.0",
     "nodemon": "^2.0.22"
+  },
+  "devDependencies": {
+    "chai-http": "^4.4.0"
   }
 }
