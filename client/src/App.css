@@ -7,6 +7,10 @@
   pointer-events: none;
 }
 
+nav a {
+  color: #fff;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -53,6 +57,11 @@ hr {
 
 .item .item-info {
   flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+.item .item-info img {
+  margin-right: 1em;
 }
 .item .item-actions button {
   padding: 0.6em;

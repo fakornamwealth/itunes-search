@@ -71,7 +71,7 @@ app.delete("/favs", (req, res) => {
   //console.log(req.body);
   favsCollection
     .chain()
-    .find({ collectionId: req.body.item.collectionId }) // find the item to be deleted
+    .find({ $loki: req.body.item }) // find the item to be deleted
     .remove(); // delete from database
   favs = favsCollection.find(); // get all remaining items to display on the client
   res.json({ favs }); // send remaining items to the client

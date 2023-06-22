@@ -1,7 +1,9 @@
 // import dependencies
-import { useState, useEffect } from "react";
+
+import { useState } from "react";
 import "./App.css";
 import iTunesSearch from "./components/iTunesSearch";
+import Nav from "./components/Nav";
 
 // define hardcoded constant list of media types to generate the drop down select form control
 // each media type item has a name, to be displayed on the interface, and a value, to be passed on to the API query
@@ -51,18 +53,6 @@ const mediaTypes = [
 // Main app component
 function App() {
   const [searchResult, setSearchResult] = useState([]); // define new state variable. initialised as an empty array.
-  const [favs, setFavs] = useState([]); // define new favs state variable. also as an empty array.
-
-  // function to get fav items from the backend using the fetch function
-  function getFavs() {
-    //const term = prompt("Enter search term:");
-    fetch(`http://localhost:3000/favs`)
-      .then((result) => result.json())
-      .then((result) => {
-        console.log(result);
-        setFavs(result.favs); // save items to local client state
-      });
-  }
 
   // function to add a new fav item to the backend.
   // this function takes one item object as input.
@@ -80,40 +70,15 @@ function App() {
       .then((result) => result.json())
       .then((result) => {
         console.log(result);
-        setFavs(result.favs); // set new fav item to local client state
+        //setFavs(result.favs); // set new fav item to local client state
       });
   }
-
-  // function to delete a fav item from the backend.
-  // this function takes one item object as input.
-  function removeFav(item) {
-    console.log("Remove from favourites...");
-    //setFavs([...favs, item]);
-    fetch(`http://localhost:3000/favs`, {
-      method: "DELETE",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ item }),
-    })
-      .then((result) => result.json())
-      .then((result) => {
-        //console.log(result);
-        // here we get a new list of faves without the deleted item
-        setFavs(result.favs); // and we set it to the local client state
-      });
-  }
-
-  // useEffect react hook triggers the getFavs() function once, on load
-  useEffect(() => {
-    getFavs();
-  }, []);
 
   // render app
   return (
     <div className="App">
       <header className="App-header">
+        <Nav />
         <h1>iTunes Search</h1>
         <form
           onSubmit={async (e) => {
@@ -148,6 +113,7 @@ function App() {
             return (
               <div className="item" key={index}>
                 <div className="item-info">
+                  <img src={result.artworkUrl100} />
                   {result.collectionName}, {result.artistName} ({result.kind})
                 </div>
                 <div className="item-actions">
@@ -159,29 +125,6 @@ function App() {
                     }}
                   >
                     Add to favourites
-                  </button>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        <hr />
-        <h2>Favourites</h2>
-        <div id="favs">
-          {favs.map((item) => {
-            // render favourite items
-            return (
-              <div key={item.collectionId} className="item">
-                <div className="item-info">{item.artistName}</div>
-                <div className="item-actions">
-                  <button
-                    onClick={() => {
-                      //console.log(item);
-                      // click event handler to delete an item
-                      removeFav(item);
-                    }}
-                  >
-                    Remove
                   </button>
                 </div>
               </div>
