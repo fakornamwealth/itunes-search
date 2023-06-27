@@ -7,6 +7,19 @@ exports[`renders correctly 1`] = `
   <header
     className="App-header"
   >
+    <nav>
+      <a
+        href="/"
+      >
+        Home
+      </a>
+       | 
+      <a
+        href="/favs"
+      >
+        Favourites
+      </a>
+    </nav>
     <h1>
       iTunes Search
     </h1>
@@ -82,13 +95,6 @@ exports[`renders correctly 1`] = `
     </h2>
     <div
       id="results"
-    />
-    <hr />
-    <h2>
-      Favourites
-    </h2>
-    <div
-      id="favs"
     />
   </header>
 </div>

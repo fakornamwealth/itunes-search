@@ -1,7 +1,7 @@
 // import dependencies
 import renderer from "react-test-renderer";
 import App from "./App";
-import iTunesSearch from "./iTunesSearch";
+import iTunesSearch from "./components/iTunesSearch";
 
 // snapshot test
 test("renders correctly", function () {
